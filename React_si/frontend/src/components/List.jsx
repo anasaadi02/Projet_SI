@@ -1,6 +1,18 @@
+import React from "react";
+import '../styles/style.css';
+import { Link } from 'react-router-dom'
+
 function List() {
   return (
-    <table className="table">
+    <div className="list-container">
+      <div className="search-bar">
+        {/* Your search bar component goes here */}
+        <input type="text" placeholder="Chercher..." />
+      </div>
+      <Link to="/add-internship">  {/* Link to navigate to the AddInternship page */}
+        <button className="add-button">+Ajouter</button>
+      </Link>
+    <table>
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -50,6 +62,7 @@ function List() {
         </tr>
       </tbody>
     </table>
+    </div>
   );
 }
 
