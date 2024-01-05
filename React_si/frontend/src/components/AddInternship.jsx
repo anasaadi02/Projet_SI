@@ -1,11 +1,11 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState } from "react";
 
-const AddInternship: React.FC = () => {
-  const [companyName, setCompanyName] = useState<string>("");
-  const [domain, setDomain] = useState<string>("");
-  const [supervisorName, setSupervisorName] = useState<string>("");
+const AddInternship = () => {
+  const [companyName, setCompanyName] = useState("");
+  const [domain, setDomain] = useState("");
+  const [supervisorName, setSupervisorName] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     console.log("Company Name:", companyName);
