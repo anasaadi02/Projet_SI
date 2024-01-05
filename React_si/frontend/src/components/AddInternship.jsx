@@ -8,12 +8,10 @@ const AddInternship = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Perform actions with the entered data, such as sending it to a server or updating state
     console.log("Company Name:", companyName);
     console.log("Domain:", domain);
     console.log("Supervisor Name:", supervisorName);
 
-    // Clear the form after submission
     setCompanyName("");
     setDomain("");
     setSupervisorName("");
