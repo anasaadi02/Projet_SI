@@ -55,7 +55,7 @@ const AddInternship = () => {
             />
           </label>
           <br />
-          <button className="add-button" type="submit">
+          <button className="Add-button" type="submit">
             Ajouter
           </button>
         </form>

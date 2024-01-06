@@ -87,7 +87,7 @@ table tbody tr:hover {
   border: solid 2px #2c3038;
 }
 form {
-  margin-top: 100px;
+  margin-top: 150px;
   width: 600px;
   background-color: #2c3038;
   margin-left: 36%;
@@ -108,13 +108,15 @@ form {
   width: 550px;
   border-radius: 10px;
 }
-.add-button {
-  background-color: darkred;
-  width: 150px;
-  border-radius: 10px;
+.Add-button {
+  background-color: red;
+  color: white;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
   font-family: "consolas";
   font-weight: bold;
-  font-size: large;
-  top: 538px;
-  right: 815px;
+  font-size: 20px;
+  margin-left: 260px;
 }
