@@ -3,17 +3,22 @@ import "../styles/style.css";
 import { Link } from "react-router-dom";
 
 function List() {
+  const handleRowClick = () => {
+    navigation.navigate("DelModInternship");
+    console.log(`Row is clicked`);
+  };
   return (
     <div className="list-container">
       <div className="search-bar">
         {/* Your search bar component goes here */}
         <input type="text" placeholder="Chercher..." />
       </div>
-      <Link to="/add-internship">
+      <Link to="/AddInternship">
         {" "}
         {/* Link to navigate to the AddInternship page */}
         <button className="add-button">+Ajouter</button>
       </Link>
+
       <table>
         <thead>
           <tr>
@@ -29,7 +34,7 @@ function List() {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr onClick={handleRowClick}>
             <th scope="row">1</th>
             <td>2020-2023</td>
             <td>...</td>
@@ -40,7 +45,7 @@ function List() {
             <td>...</td>
             <td>...</td>
           </tr>
-          <tr>
+          <tr onClick={handleRowClick}>
             <th scope="row">2</th>
             <td>2020-2023</td>
             <td>...</td>
@@ -51,7 +56,7 @@ function List() {
             <td>...</td>
             <td>...</td>
           </tr>
-          <tr>
+          <tr onClick={handleRowClick}>
             <th scope="row">3</th>
             <td>2020-2023</td>
             <td>...</td>

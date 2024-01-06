@@ -87,7 +87,7 @@ table tbody tr:hover {
   border: solid 2px #2c3038;
 }
 form {
-  margin-top: 150px;
+  margin-top: 50px;
   width: 600px;
   background-color: #2c3038;
   margin-left: 36%;
@@ -120,3 +120,5 @@ form {
   font-size: 20px;
   margin-left: 260px;
 }
+
+/* styling Delete,Modify internship*/
