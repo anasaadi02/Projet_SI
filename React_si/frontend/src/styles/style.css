@@ -72,7 +72,6 @@ table tbody tr:hover {
   background-color: darkred;
 }
 
-
 .add-title {
   font-family: "consolas";
   font-weight: bold;
@@ -87,17 +86,15 @@ table tbody tr:hover {
   border: solid 2px #2c3038;
 }
 form {
-<<<<<<< HEAD
   margin-top: 50px;
-  width: 600px;
-=======
-  max-width: 600px;
+
+  max-width: 1000px;
   width: 50%; /* Adjust the width of the form content */
   margin: 20px auto; /* Center the form content within the form container */
   align-items: center;
   text-align: center;
   justify-content: center;
->>>>>>> 471a65cab77986e247f8c9916ebcb607b7c371b3
+
   background-color: #2c3038;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -106,12 +103,12 @@ form {
 
 .add-labels {
   width: 45%;
-  font-size: 16px; /* Reduce font size */
+  font-size: 22px;
   font-family: "consolas";
   font-weight: bold;
   color: white;
-  padding: 0 10px; /* Reduce padding */
-  display: block; /* Change from display: flex to block */
+  padding: 10px;
+  display: block;
   text-align: left;
 }
 .form-container {
@@ -127,10 +124,12 @@ form {
 }
 
 .add-inputs {
-  width: 100%; /* Ensure input fields take up the full width */
-  border-radius: 8px; /* Adjust border-radius */
-  padding: 6px; /* Reduce padding */
-  display: block; /* Change from display: flex to block */
+  font-weight: bold;
+  font-size: 20px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 6px;
+  display: block;
   margin-left: auto;
   text-align: center;
 }
@@ -138,20 +137,14 @@ form {
 .Add-button {
   background-color: red;
   color: white;
-  padding: 6px 12px; /* Reduce padding */
-  border: none;
+  top: 50px;
   border-radius: 5px;
   cursor: pointer;
   font-family: "consolas";
   font-weight: bold;
-  font-size: 14px; /* Reduce font size */
-  margin-bottom: 10px;
+  font-size: 20px;
 }
 
-<<<<<<< HEAD
-/* styling Delete,Modify internship*/
-=======
-.radio{
+.radio {
   text-align: left;
 }
->>>>>>> 471a65cab77986e247f8c9916ebcb607b7c371b3
