@@ -1,10 +1,12 @@
 import React from "react";
 import "../styles/style.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function List() {
+  let navigation = useNavigate();
+  
   const handleRowClick = () => {
-    navigation.navigate("DelModInternship");
+    navigation("/DelModInternship");
     console.log(`Row is clicked`);
   };
   return (

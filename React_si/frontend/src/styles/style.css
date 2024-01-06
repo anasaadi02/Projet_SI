@@ -87,17 +87,12 @@ table tbody tr:hover {
   border: solid 2px #2c3038;
 }
 form {
-<<<<<<< HEAD
-  margin-top: 50px;
-  width: 600px;
-=======
   max-width: 600px;
   width: 50%; /* Adjust the width of the form content */
   margin: 20px auto; /* Center the form content within the form container */
   align-items: center;
   text-align: center;
   justify-content: center;
->>>>>>> 471a65cab77986e247f8c9916ebcb607b7c371b3
   background-color: #2c3038;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -148,10 +143,6 @@ form {
   margin-bottom: 10px;
 }
 
-<<<<<<< HEAD
-/* styling Delete,Modify internship*/
-=======
 .radio{
   text-align: left;
 }
->>>>>>> 471a65cab77986e247f8c9916ebcb607b7c371b3

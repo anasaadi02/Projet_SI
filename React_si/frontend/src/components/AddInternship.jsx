@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/style.css";
 
 const AddInternship = () => {
   const [entreprise, setEntreprise] = useState("");
@@ -26,6 +27,7 @@ const AddInternship = () => {
       <h2 className="add-title">Ajouter les infos du stage</h2>
       <div className="add1">
         <form className="form-container" onSubmit={handleSubmit}>
+        <div className="form-row">
           <label className="add-labels">
             nom d'entreprise
             <input
@@ -58,6 +60,8 @@ const AddInternship = () => {
               onChange={(e) => setSujet(e.target.value)}
             />
           </label>
+          </div>
+          <div className="form-row">
           <label className="add-labels">
             l'encadrant
             <input
@@ -79,7 +83,8 @@ const AddInternship = () => {
               onChange={(e) => setCompte_rendu(e.target.value)}
             />
           </label>
-          <br />
+          </div>
+          <div className="form-row">
           <label className="add-labels">
             date début
             <input type="date" className="add-inputs"></input>
@@ -89,6 +94,7 @@ const AddInternship = () => {
             date fin
             <input type="date" className="add-inputs"></input>
           </label>
+          </div>
           <br />
           <button className="Add-button" type="submit">
             Ajouter
