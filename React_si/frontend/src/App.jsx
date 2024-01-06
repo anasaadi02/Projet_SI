@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import List from "./components/List";
 import AddInternship from './components/AddInternship';
+import AddEntreprise from './components/AddEntreprise';
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<List/>} />
         <Route path="/add-internship" element={<AddInternship/>} />
+        <Route path="/add-entreprise" element={<AddEntreprise/>} />
       </Routes>
     </Router>
   );

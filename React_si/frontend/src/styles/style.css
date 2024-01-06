@@ -72,7 +72,7 @@ table tbody tr:hover {
   background-color: darkred;
 }
 
-/*styling of enterprise page*/
+
 .add-title {
   font-family: "consolas";
   font-weight: bold;
@@ -87,36 +87,62 @@ table tbody tr:hover {
   border: solid 2px #2c3038;
 }
 form {
-  margin-top: 150px;
-  width: 600px;
+  max-width: 600px;
+  width: 50%; /* Adjust the width of the form content */
+  margin: 20px auto; /* Center the form content within the form container */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   background-color: #2c3038;
-  margin-left: 36%;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding-top: 10px;
 }
+
 .add-labels {
-  font-size: 27px;
+  width: 45%;
+  font-size: 16px; /* Reduce font size */
   font-family: "consolas";
   font-weight: bold;
   color: white;
-  padding: 20px;
-  top: -50px;
+  padding: 0 10px; /* Reduce padding */
+  display: block; /* Change from display: flex to block */
+  text-align: left;
 }
-.add-inputs {
+.form-container {
   display: flex;
-  flex-direction: row-reverse;
-  width: 550px;
-  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
 }
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.add-inputs {
+  width: 100%; /* Ensure input fields take up the full width */
+  border-radius: 8px; /* Adjust border-radius */
+  padding: 6px; /* Reduce padding */
+  display: block; /* Change from display: flex to block */
+  margin-left: auto;
+  text-align: center;
+}
+
 .Add-button {
   background-color: red;
   color: white;
-  padding: 7px 15px;
+  padding: 6px 12px; /* Reduce padding */
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-family: "consolas";
   font-weight: bold;
-  font-size: 20px;
-  margin-left: 260px;
+  font-size: 14px; /* Reduce font size */
+  margin-bottom: 10px;
+}
+
+.radio{
+  text-align: left;
 }
