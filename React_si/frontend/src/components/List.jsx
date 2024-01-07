@@ -3,12 +3,49 @@ import "../styles/style.css";
 import { Link, useNavigate } from "react-router-dom";
 
 function List() {
+  let dataList = [
+    {
+      id: 1,
+      Promo: "2020-2023",
+      NEtudiant: "...",
+      Professeur: "...",
+      Tuteur: "...",
+      Entreprise: "...",
+      Domaine: "...",
+      Année: "...",
+      CompteRendu: "...",
+    },
+    {
+      id: 2,
+      Promo: "2020-2023",
+      NEtudiant: "...",
+      Professeur: "...",
+      Tuteur: "...",
+      Entreprise: "...",
+      Domaine: "...",
+      Année: "...",
+      CompteRendu: "...",
+    },
+    {
+      id: 3,
+      Promo: "2020-2023",
+      NEtudiant: "...",
+      Professeur: "...",
+      Tuteur: "...",
+      Entreprise: "...",
+      Domaine: "...",
+      Année: "...",
+      CompteRendu: "...",
+    },
+  ];
+  console.log(dataList);
   let navigation = useNavigate();
-  
-  const handleRowClick = () => {
-    navigation("/DelModInternship");
-    console.log(`Row is clicked`);
+
+  const handleRowClick = (rowData) => {
+    // Navigate to "/DelModInternship" with the row data
+    navigation("/DelModInternship", { state: { rowData } });
   };
+
   return (
     <div className="list-container">
       <div className="search-bar">
@@ -24,7 +61,7 @@ function List() {
       <table>
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">id</th>
             <th scope="col">Promo</th>
             <th scope="col">N°Etudiant</th>
             <th scope="col">Professeur</th>
@@ -36,39 +73,19 @@ function List() {
           </tr>
         </thead>
         <tbody>
-          <tr onClick={handleRowClick}>
-            <th scope="row">1</th>
-            <td>2020-2023</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-          </tr>
-          <tr onClick={handleRowClick}>
-            <th scope="row">2</th>
-            <td>2020-2023</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-          </tr>
-          <tr onClick={handleRowClick}>
-            <th scope="row">3</th>
-            <td>2020-2023</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-          </tr>
+          {dataList.map((item) => (
+            <tr key={item.id} onClick={() => handleRowClick(item)}>
+              <th scope="row">{item.id}</th>
+              <td>{item.Promo}</td>
+              <td>{item.NEtudiant}</td>
+              <td>{item.Professeur}</td>
+              <td>{item.Tuteur}</td>
+              <td>{item.Entreprise}</td>
+              <td>{item.Domaine}</td>
+              <td>{item.Année}</td>
+              <td>{item.CompteRendu}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
