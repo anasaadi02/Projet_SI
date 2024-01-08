@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from myapp.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #add my first url ***
-    path("", include("myapp.urls"))
+    path("api/", include('SI_app.api.urls')),
 ]
 
 #for pdf handling ***

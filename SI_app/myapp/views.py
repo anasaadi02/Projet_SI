@@ -1,5 +1,10 @@
 from django.shortcuts import render, HttpResponse
+from .models import Entreprise
 
 # Create your views here.
 def home(request):
-    return render(request, "home.html")
+    obj=Entreprise.objects.all()
+    context={
+        "obj":obj,
+    }
+    return render(request, "home.html", context)
