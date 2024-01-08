@@ -27,19 +27,19 @@ const AddInternship = () => {
       <h2 className="add-title">Ajouter les infos du stage</h2>
       <div className="add1">
         <form className="form-container" onSubmit={handleSubmit}>
-        <div className="form-row">
-          <label className="add-labels">
-            nom d'entreprise
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="text"
-              value={entreprise}
-              onChange={(e) => setEntreprise(e.target.value)}
-            />
-          </label>
-          <br />
-          {/* <label className="add-labels">
+          <div className="form-row">
+            <label className="add-labels">
+              Entreprise
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={entreprise}
+                onChange={(e) => setEntreprise(e.target.value)}
+              />
+            </label>
+            <br />
+            {/* <label className="add-labels">
             domaine:
             <input
               placeholder="..."
@@ -50,50 +50,50 @@ const AddInternship = () => {
             />
           </label>
           <br /> */}
-          <label className="add-labels">
-            sujet
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="text"
-              value={sujet}
-              onChange={(e) => setSujet(e.target.value)}
-            />
-          </label>
+            <label className="add-labels">
+              sujet
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={sujet}
+                onChange={(e) => setSujet(e.target.value)}
+              />
+            </label>
           </div>
           <div className="form-row">
-          <label className="add-labels">
-            l'encadrant
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="text"
-              value={encadrant}
-              onChange={(e) => setEncadrant(e.target.value)}
-            />
-          </label>
-          <br />
-          <label className="add-labels">
-            compte rendu
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="text"
-              value={compte_rendu}
-              onChange={(e) => setCompte_rendu(e.target.value)}
-            />
-          </label>
+            <label className="add-labels">
+              Tuteur
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={encadrant}
+                onChange={(e) => setEncadrant(e.target.value)}
+              />
+            </label>
+            <br />
+            <label className="add-labels">
+              Compte rendu
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={compte_rendu}
+                onChange={(e) => setCompte_rendu(e.target.value)}
+              />
+            </label>
           </div>
           <div className="form-row">
-          <label className="add-labels">
-            date début
-            <input type="date" className="add-inputs"></input>
-          </label>
-          <br />
-          <label className="add-labels">
-            date fin
-            <input type="date" className="add-inputs"></input>
-          </label>
+            <label className="add-labels">
+              date début
+              <input type="date" className="add-inputs"></input>
+            </label>
+            <br />
+            <label className="add-labels">
+              date fin
+              <input type="date" className="add-inputs"></input>
+            </label>
           </div>
           <br />
           <button className="Add-button" type="submit">

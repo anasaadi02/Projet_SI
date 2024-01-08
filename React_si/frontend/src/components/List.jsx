@@ -38,7 +38,7 @@ function List() {
       CompteRendu: "...",
     },
   ];
-  console.log(dataList);
+  // console.log(dataList);
   let navigation = useNavigate();
 
   const handleRowClick = (rowData) => {
