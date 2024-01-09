@@ -2,25 +2,55 @@ import React, { useState } from "react";
 import "../styles/style.css";
 
 const AddInternship = () => {
-  const [entreprise, setEntreprise] = useState("");
-  const [domaine, setDomaine] = useState("");
-  const [encadrant, setEncadrant] = useState("");
-  const [sujet, setSujet] = useState("");
+  const [promo, setPromo] = useState("");
+  const [nEtudiant, setNEtudiant] = useState("");
+  const [prof, setProf] = useState("");
+  const [tuteur, setTuteur] = useState("");
+  const [tpe, setTpe] = useState("");
+  const [annee, setAnnee] = useState("");
   const [compte_rendu, setCompte_rendu] = useState("");
+  const [entreprise, setEntreprise] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("Company Name:", entreprise);
-    console.log("Domain:", domaine);
-    console.log("Supervisor Name:", encadrant);
+    const newRow = {
+      promo: promo,
+      nEtudiant: nEtudiant,
+      prof: prof,
+      tuteur: tuteur,
+      tpe: tpe,
+      annee: annee,
+      compte_rendu: compte_rendu,
+      entreprise: entreprise,
+    };
 
-    setEntreprise("");
-    setDomaine("");
-    setEncadrant("");
-    setSujet("");
+
+
+    fetch(`${import.meta.env.VITE_ADD_URL}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newRow),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+
+    setPromo("");
+    setNEtudiant("");
+    setProf("");
+    setTuteur("");
+    setTpe("");
+    setAnnee("");
     setCompte_rendu("");
-  };
+    setEntreprise("");
+    };
 
   return (
     <div className="add">
@@ -29,52 +59,79 @@ const AddInternship = () => {
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="form-row">
             <label className="add-labels">
-              Entreprise
+              Promo
               <input
                 placeholder="..."
                 className="add-inputs"
                 type="text"
-                value={entreprise}
-                onChange={(e) => setEntreprise(e.target.value)}
+                value={promo}
+                onChange={(e) => setPromo(e.target.value)}
               />
             </label>
             <br />
-            {/* <label className="add-labels">
-            domaine:
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="text"
-              value={domaine}
-              onChange={(e) => setDomaine(e.target.value)}
-            />
-          </label>
-          <br /> */}
             <label className="add-labels">
-              sujet
+              Student Number
               <input
                 placeholder="..."
                 className="add-inputs"
                 type="text"
-                value={sujet}
-                onChange={(e) => setSujet(e.target.value)}
+                value={nEtudiant}
+                onChange={(e) => setNEtudiant(e.target.value)}
               />
             </label>
           </div>
+          <br />
           <div className="form-row">
             <label className="add-labels">
-              Tuteur
+              Professor
               <input
                 placeholder="..."
                 className="add-inputs"
                 type="text"
-                value={encadrant}
-                onChange={(e) => setEncadrant(e.target.value)}
+                value={prof}
+                onChange={(e) => setProf(e.target.value)}
               />
             </label>
             <br />
             <label className="add-labels">
-              Compte rendu
+              Tutor
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={tuteur}
+                onChange={(e) => setTuteur(e.target.value)}
+              />
+            </label>
+          </div>
+          <br />
+          <div className="form-row">
+            <label className="add-labels">
+              Type
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={tpe}
+                onChange={(e) => setTpe(e.target.value)}
+              />
+            </label>
+            <br />
+            <label className="add-labels">
+              Year
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={annee}
+                onChange={(e) => setAnnee(e.target.value)}
+              />
+            </label>
+          </div>
+          <br />
+          <div className="form-row">
+            <label className="add-labels">
+              Report
               <input
                 placeholder="..."
                 className="add-inputs"
@@ -83,16 +140,16 @@ const AddInternship = () => {
                 onChange={(e) => setCompte_rendu(e.target.value)}
               />
             </label>
-          </div>
-          <div className="form-row">
-            <label className="add-labels">
-              date début
-              <input type="date" className="add-inputs"></input>
-            </label>
             <br />
             <label className="add-labels">
-              date fin
-              <input type="date" className="add-inputs"></input>
+              Company
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={entreprise}
+                onChange={(e) => setEntreprise(e.target.value)}
+              />
             </label>
           </div>
           <br />
@@ -103,6 +160,6 @@ const AddInternship = () => {
       </div>
     </div>
   );
-};
+}
 
 export default AddInternship;

@@ -19,11 +19,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from myapp.views import home
+from myapp.api.views import StageViewSet, StageUpdateView, StageCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #add my first url ***
     path("api/", include('SI_app.api.urls')),
+    path("add/", StageCreateView.as_view()),
 ]
 
 #for pdf handling ***
