@@ -57,6 +57,7 @@ class Stage(models.Model):
     nEtudiant = models.IntegerField()
     prof = models.CharField(max_length=255)
     tuteur = models.CharField(max_length=255)
+    entreprise = models.CharField(max_length=255)
     tpe = models.CharField(max_length=255)
     annee = models.CharField(max_length=4)
     compte_rendu = models.TextField()

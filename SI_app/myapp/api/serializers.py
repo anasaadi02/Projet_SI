@@ -5,6 +5,6 @@ from ..models import Stage
 class StageSerializer(ModelSerializer):
     class Meta:
         model = Stage
-        fields = ('nStage', 'promo', 'nEtudiant', 'prof', 'tuteur', 'tpe', 'annee', 'compte_rendu')
+        fields = ['nStage', 'promo', 'nEtudiant', 'prof', 'tuteur','entreprise', 'tpe', 'annee', 'compte_rendu']
         
     
