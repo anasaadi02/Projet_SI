@@ -6,6 +6,7 @@ function List() {
 
   const [dataList, setDataList] = useState([])
 
+  //hadi hia la fonction likatjib data mn django
   useEffect(() => {
     async function fetchData() {
       console.log(import.meta.env.VITE_API_URL)
