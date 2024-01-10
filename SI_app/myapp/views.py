@@ -13,21 +13,3 @@ def home(request):
     }
     return render(request, "home.html", context)
 
-@csrf_exempt
-def add_stage(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        new_stage = Stage(
-            promo=data['promo'],
-            nEtudiant=data['nEtudiant'],
-            prof=data['prof'],
-            tuteur=data['tuteur'],
-            tpe=data['tpe'],
-            annee=data['annee'],
-            compte_rendu=data['compte_rendu'],
-            entreprise=data['entreprise'],
-        )
-        new_stage.save()
-        return JsonResponse({'message': 'Stage added successfully'})
-    else:
-        return JsonResponse({'error': 'Invalid request method'})

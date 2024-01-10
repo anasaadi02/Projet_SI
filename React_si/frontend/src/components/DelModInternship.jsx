@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "../styles/style.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import List from "./List";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const DelModInternship = () => {
@@ -20,8 +18,6 @@ const DelModInternship = () => {
   const [isPopUpDel, setIsPopUpDel] = useState(false);
   const [isPopUpMod, setIsPopUpMod] = useState(false);
 
-  console.log(rowData)
-
   let navigation = useNavigate();
 
   const afterModDel = (buttonId) => {
@@ -37,6 +33,76 @@ const DelModInternship = () => {
   const stayinpagemod = () => {
     setIsPopUpMod(false);
   };
+
+  function getCsrfToken() {
+    const csrfCookie = document.cookie
+      .split('; ')
+      .find((cookie) => cookie.startsWith('csrftoken='));
+  
+    if (csrfCookie) {
+      return csrfCookie.split('=')[1];
+    }
+  
+    return null;
+  }
+
+  const csrfToken = getCsrfToken();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+    const updatedRow = {
+      nStage: rowData.nStage,
+      promo: promo || rowData.promo,
+      nEtudiant: nEtudiant || rowData.nEtudiant,
+      prof: prof || rowData.prof,
+      tuteur: tuteur || rowData.tuteur,
+      tpe: tpe || rowData.tpe,
+      annee: annee || rowData.annee,
+      compte_rendu: compte_rendu || rowData.compte_rendu,
+      entreprise: entreprise || rowData.entreprise,
+    };
+
+    console.log(updatedRow)
+    fetch(`${import.meta.env.VITE_UPDATE_URL}/${updatedRow.nStage}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrfToken,
+      },
+      body: JSON.stringify(updatedRow),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    console.log(updatedRow)
+    console.log("done")
+    setTimeout(() => {
+      navigation("/");
+    }, 500);
+  };
+  
+  const handleDelete = () => {
+    fetch(`${import.meta.env.VITE_DELETE_URL}/${rowData.nStage}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+      setTimeout(() => {
+        navigation("/");
+      }, 500);
+  };
+  
+
   return (
     <div>
       <h2 className="add-title">Modifier les infos du stage</h2>
@@ -95,7 +161,7 @@ const DelModInternship = () => {
           <div className="popup-content-del">
             <h4>le stage va être supprimer</h4>
             <div>
-              <button onClick={() => navigation("/")}>valider</button>
+              <button onClick={handleDelete}>valider</button>
               <button onClick={stayinpagedel} className="retour">
                 retour
               </button>
@@ -107,7 +173,7 @@ const DelModInternship = () => {
         <div className="popup">
           <div className="popup-content-mod">
             <h4>le stage va être modifier</h4>
-            <button onClick={() => navigation("/")}>valider</button>
+            <button onClick={handleSubmit}>valider</button>
             <button onClick={stayinpagemod} className="retour">
               retour
             </button>
