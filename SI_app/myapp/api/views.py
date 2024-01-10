@@ -19,6 +19,7 @@ class StageDetailView(RetrieveAPIView):
 class StageCreateView(CreateAPIView):
     queryset = Stage.objects.all()
     serializer_class = StageSerializer
+    
 
 class StageUpdateView(UpdateAPIView):
     queryset = Stage.objects.all()
