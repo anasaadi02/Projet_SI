@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../styles/style.css";
+import { useNavigate } from "react-router-dom";
+import List from "./List";
 
 const AddInternship = () => {
   const [promo, setPromo] = useState("");
@@ -10,7 +12,12 @@ const AddInternship = () => {
   const [annee, setAnnee] = useState("");
   const [compte_rendu, setCompte_rendu] = useState("");
   const [entreprise, setEntreprise] = useState("");
+  const [isPopUpConfirm, setIsPopUpConfirm] = useState(false);
 
+  const afterAdd = () => {
+    setIsPopUpConfirm(true);
+  };
+  let navigation = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -25,22 +32,20 @@ const AddInternship = () => {
       entreprise: entreprise,
     };
 
-
-
     fetch(`${import.meta.env.VITE_ADD_URL}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(newRow),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newRow),
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
 
     setPromo("");
     setNEtudiant("");
@@ -50,7 +55,7 @@ const AddInternship = () => {
     setAnnee("");
     setCompte_rendu("");
     setEntreprise("");
-    };
+  };
 
   return (
     <div className="add">
@@ -70,7 +75,7 @@ const AddInternship = () => {
             </label>
             <br />
             <label className="add-labels">
-              Student Number
+              N°Etudiant
               <input
                 placeholder="..."
                 className="add-inputs"
@@ -83,7 +88,7 @@ const AddInternship = () => {
           <br />
           <div className="form-row">
             <label className="add-labels">
-              Professor
+              Professeur
               <input
                 placeholder="..."
                 className="add-inputs"
@@ -94,7 +99,7 @@ const AddInternship = () => {
             </label>
             <br />
             <label className="add-labels">
-              Tutor
+              Tuteur
               <input
                 placeholder="..."
                 className="add-inputs"
@@ -118,7 +123,7 @@ const AddInternship = () => {
             </label>
             <br />
             <label className="add-labels">
-              Year
+              Année
               <input
                 placeholder="..."
                 className="add-inputs"
@@ -131,7 +136,7 @@ const AddInternship = () => {
           <br />
           <div className="form-row">
             <label className="add-labels">
-              Report
+              Compte rendu
               <input
                 placeholder="..."
                 className="add-inputs"
@@ -153,13 +158,21 @@ const AddInternship = () => {
             </label>
           </div>
           <br />
-          <button className="Add-button" type="submit">
+          <button className="Add-button" type="submit" onClick={afterAdd}>
             Ajouter
           </button>
+          {isPopUpConfirm && (
+            <div className="popup">
+              <div className="popup-content-mod">
+                <h4>le stage a été ajouté avec succès</h4>
+                <button onClick={() => navigation("/")}>valider</button>
+              </div>
+            </div>
+          )}
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default AddInternship;

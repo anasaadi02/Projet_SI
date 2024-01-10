@@ -85,7 +85,12 @@ table tbody tr:hover {
 .add {
   /* margin-left: 40px; */
   border: solid 2px #2c3038;
+  /* background-image: url(../assets/intern.png);
+  background-repeat: no-repeat;
+  top: 50px;
+  background-size: cover; */
 }
+
 form {
   max-width: 800px;
   width: 60%; /* Adjust the width of the form content */
