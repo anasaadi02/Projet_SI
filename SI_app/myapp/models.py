@@ -23,7 +23,7 @@ class Professeur(models.Model):
     nom = models.CharField(max_length=255)
     prenom = models.CharField(max_length=255)
     adresse = models.CharField(max_length=255)
-    suite = models.CharField(max_length=255)
+    suite = models.CharField(max_length=255, blank=True, null=True)
     code_postal = models.CharField(max_length=10)
     ville = models.CharField(max_length=255)
     tel_ecole = models.CharField(max_length=15)

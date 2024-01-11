@@ -2,34 +2,53 @@ import React, { useState } from "react";
 import "../styles/style.css";
 
 const AddEntreprise = () => {
-  const [numSiret, setNumSiret] = useState("");
-  const [formeJuridique, setFormeJuridique] = useState("");
-  const [raisonSociale, setRaisonSociale] = useState("");
+  const [nSiret, setNumSiret] = useState("");
+  const [fJuridique, setFormeJuridique] = useState("");
+  const [rSociale, setRaisonSociale] = useState("");
   const [adresse, setAdresse] = useState("");
   const [suite, setSuite] = useState("");
-  const [codePostal, setCodePostal] = useState("");
+  const [codeP, setCodePostal] = useState("");
   const [ville, setVille] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [fax, setFax] = useState("");
+  const [Tele, setTelephone] = useState("");
+  const [FAX, setFax] = useState("");
   const [contact, setContact] = useState("");
-  const [telContact, setTelContact] = useState("");
+  const [teleContact, setTelContact] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("N°Siret:", numSiret);
-    console.log("Forme juridique:", formeJuridique);
-    console.log("Raison sociale:", raisonSociale);
-    console.log("Adresse:", adresse);
-    console.log("Suite:", suite);
-    console.log("Code postal:", codePostal);
-    console.log("Ville:", ville);
-    console.log("Téléphone:", telephone);
-    console.log("Fax:", fax);
-    console.log("Contact:", contact);
-    console.log("Tél contact:", telContact);
+    try {
+      const newEntreprise = {
+        nSiret,
+        fJuridique,
+        rSociale,
+        adresse,
+        suite,
+        codeP,
+        ville,
+        Tele,
+        FAX,
+        contact,
+        teleContact,
+      };
 
-    // Reset form fields
+      console.log(newEntreprise);
+
+      fetch(`${import.meta.env.VITE_ADDE_URL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newEntreprise),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
     setNumSiret("");
     setFormeJuridique("");
     setRaisonSociale("");
@@ -41,7 +60,10 @@ const AddEntreprise = () => {
     setFax("");
     setContact("");
     setTelContact("");
-  };
+  }catch (error) {
+    console.error("Error:", error);
+  }
+};
 
   return (
     <div className="add">
@@ -54,7 +76,7 @@ const AddEntreprise = () => {
             <input
               placeholder="..."
               className="add-inputs"
-              value={numSiret}
+              value={nSiret}
               onChange={(e) => setNumSiret(e.target.value)}
             />
           </label>
@@ -66,7 +88,7 @@ const AddEntreprise = () => {
                 <input
                   type="radio"
                   value="SA"
-                  checked={formeJuridique === "SA"}
+                  checked={fJuridique === "SA"}
                   onChange={() => setFormeJuridique("SA")}
                 />
                 SA
@@ -77,7 +99,7 @@ const AddEntreprise = () => {
                   className="radio"
                   type="radio"
                   value="SARL"
-                  checked={formeJuridique === "SARL"}
+                  checked={fJuridique === "SARL"}
                   onChange={() => setFormeJuridique("SARL")}
                 />
                 SARL
@@ -94,7 +116,7 @@ const AddEntreprise = () => {
               placeholder="..."
               className="add-inputs"
               type="text"
-              value={raisonSociale}
+              value={rSociale}
               onChange={(e) => setRaisonSociale(e.target.value)}
             />
           </label>
@@ -129,7 +151,7 @@ const AddEntreprise = () => {
               placeholder="..."
               className="add-inputs"
               type="text"
-              value={codePostal}
+              value={codeP}
               onChange={(e) => setCodePostal(e.target.value)}
             />
           </label>
@@ -153,7 +175,7 @@ const AddEntreprise = () => {
               placeholder="..."
               className="add-inputs"
               type="tel"
-              value={telephone}
+              value={Tele}
               onChange={(e) => setTelephone(e.target.value)}
             />
           </label>
@@ -166,7 +188,7 @@ const AddEntreprise = () => {
               placeholder="..."
               className="add-inputs"
               type="tel"
-              value={fax}
+              value={FAX}
               onChange={(e) => setFax(e.target.value)}
             />
           </label>
@@ -189,12 +211,12 @@ const AddEntreprise = () => {
               placeholder="..."
               className="add-inputs"
               type="tel"
-              value={telContact}
+              value={teleContact}
               onChange={(e) => setTelContact(e.target.value)}
             />
           </label>
           <br />
-          <button className="Add-button" type="submit">
+          <button className="Add-button" type="submit" onClick={()=>handleSubmit}>
             Ajouter :
           </button>
         </form>

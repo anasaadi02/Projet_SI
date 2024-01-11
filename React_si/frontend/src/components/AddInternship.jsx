@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../styles/style.css";
 import { useNavigate } from "react-router-dom";
-import List from "./List";
 
 const AddInternship = () => {
   const [promo, setPromo] = useState("");
