@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from myapp.views import home
-from myapp.api.views import StageViewSet, StageUpdateView, StageCreateView, StageDeleteView, EntrepriseCreateView
+from myapp.api.views import StageViewSet, StageUpdateView, StageCreateView, StageDeleteView, EntrepriseCreateView, EntrepriseListView, EtudiantListView, ProfesseurListView
 
 
 
@@ -37,6 +37,9 @@ urlpatterns = [
     path("update/<int:pk>", StageUpdateView.as_view()),
     path('delete/<int:pk>', StageDeleteView.as_view()),
     path("addE/", EntrepriseCreateView.as_view()),
+    path('api/entre/', EntrepriseListView.as_view()),
+    path('api/etudiant/', EtudiantListView.as_view()),
+    path('api/prof/', ProfesseurListView.as_view()),
 ]
 
 #for pdf handling ***

@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 function List() {
   const [dataList, setDataList] = useState([]);
 
-  //hadi hia la fonction likatjib data mn django
+  //hadi hia la fonction likatjib data mn
   useEffect(() => {
     async function fetchData() {
       console.log(import.meta.env.VITE_API_URL);
