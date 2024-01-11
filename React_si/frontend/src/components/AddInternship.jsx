@@ -103,6 +103,8 @@ const AddInternship = () => {
   }, [])
 
   console.log(EntrdataList, 'hhh');
+  console.log(etudiantDataList);
+  console.log(profDataList);
 
   return (
     <div className="add">
