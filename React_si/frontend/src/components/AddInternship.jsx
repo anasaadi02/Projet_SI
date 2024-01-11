@@ -146,12 +146,16 @@ const AddInternship = () => {
           <div className="form-row">
             <label className="add-labels">
               Professeur
-              <input
-                className="add-inputs"
-                type="text"
-                value={prof}
-                onChange={(e) => setProf(e.target.value)}
-              />
+              <select className="add-inputs" value={prof} onChange={(e)=>setProf(e.target.value)}>
+                <option value="">-</option>
+                {profDataList && profDataList.length > 0 && profDataList
+                  .sort((a, b) => a.nom.localeCompare(b.nom))
+                  .map((pro) => (
+                    <option key={pro.nProf} value={pro.nom + ' ' + pro.prenom}>
+                      {pro.nom} {pro.prenom}
+                    </option>
+                  ))}
+              </select>
             </label>
             <br />
             <label className="add-labels">
@@ -199,13 +203,17 @@ const AddInternship = () => {
             </label>
             <br />
             <label className="add-labels">
-              Company
-              <input
-                className="add-inputs"
-                type="text"
-                value={entreprise}
-                onChange={(e) => setEntreprise(e.target.value)}
-              />
+              Entreprise
+              <select className="add-inputs" value={entreprise} onChange={(e) => setEntreprise(e.target.value)}>
+                <option value="">-</option>
+                {EntrdataList && EntrdataList.length > 0 && EntrdataList
+                  .sort((a, b) => a.nom.localeCompare(b.nom))
+                  .map((entr) => (
+                    <option key={entr.nom} value={entr.nom}>
+                      {entr.nom}
+                    </option>
+                  ))}
+              </select>
             </label>
           </div>
           <br />

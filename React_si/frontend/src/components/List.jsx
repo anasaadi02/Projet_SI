@@ -5,6 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 function List() {
   const [dataList, setDataList] = useState([]);
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredDataList = dataList.filter((item) =>
+    Object.values(item).some((val) =>
+      val.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
   //hadi hia la fonction likatjib data mn
   useEffect(() => {
     async function fetchData() {
@@ -42,7 +49,8 @@ function List() {
     <div className="list-container">
       <div className="search-bar">
         {/* Your search bar component goes here */}
-        <input type="text" placeholder="Chercher..." />
+        <input type="text" placeholder="Chercher..." value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)} />
       </div>
       <Link to="/AddInternship">
         {" "}
@@ -70,7 +78,7 @@ function List() {
           </tr>
         </thead>
         <tbody>
-          {dataList.map((item) => (
+          {filteredDataList.map((item) => (
             <tr key={item.nStage} onClick={() => handleRowClick(item)}>
               <th scope="row">{item.nStage}</th>
               <td>{item.promo}</td>

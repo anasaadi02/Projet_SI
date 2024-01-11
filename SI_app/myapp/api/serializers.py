@@ -11,7 +11,7 @@ class StageSerializer(ModelSerializer):
 class EntrepriseSerializer(ModelSerializer):
     class Meta:
         model = Entreprise
-        fields = ['nSiret', 'fJuridique', 'rSociale', 'adresse', 'suite','codeP', 'ville', 'Tele', 'FAX', 'contact', 'teleContact']
+        fields = ['nom', 'nSiret', 'fJuridique', 'rSociale', 'adresse', 'suite','codeP', 'ville', 'Tele', 'FAX', 'contact', 'teleContact']
 
 
 class EtudiantSerializer(ModelSerializer):

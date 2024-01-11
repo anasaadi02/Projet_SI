@@ -3,6 +3,7 @@ import "../styles/style.css";
 import { useNavigate } from "react-router-dom";
 
 const AddEntreprise = () => {
+  const [nom, setNom] = useState("");
   const [nSiret, setNumSiret] = useState("");
   const [fJuridique, setFormeJuridique] = useState("");
   const [rSociale, setRaisonSociale] = useState("");
@@ -21,6 +22,7 @@ const AddEntreprise = () => {
 
     try {
       const newEntreprise = {
+        nom,
         nSiret,
         fJuridique,
         rSociale,
@@ -65,6 +67,9 @@ const AddEntreprise = () => {
     } catch (error) {
       console.error("Error:", error);
     }
+
+    navigation("/")
+
   };
 
   return (
@@ -80,6 +85,15 @@ const AddEntreprise = () => {
       <div className="add1">
         <form onSubmit={handleSubmit} className="form-container">
           <div className="form-row">
+          <label className="add-labels">
+              Nom :
+              <input
+                placeholder="..."
+                className="add-inputs"
+                value={nom}
+                onChange={(e) => setNom(e.target.value)}
+                />
+            </label>
             <label className="add-labels">
               N°Siret :
               <input
@@ -87,9 +101,11 @@ const AddEntreprise = () => {
                 className="add-inputs"
                 value={nSiret}
                 onChange={(e) => setNumSiret(e.target.value)}
-              />
+                />
             </label>
+            </div>
             <br />
+            <div className="form-row">
             <label className="add-labels">
               Forme juridique :
               <div>
@@ -116,9 +132,7 @@ const AddEntreprise = () => {
                 {/* Add more radio options as needed */}
               </div>
             </label>
-          </div>
           <br />
-          <div className="form-row">
             <label className="add-labels">
               Raison sociale :
               <input
@@ -129,7 +143,10 @@ const AddEntreprise = () => {
                 onChange={(e) => setRaisonSociale(e.target.value)}
               />
             </label>
+            </div>
+            
             <br />
+            <div className="form-row">
             <label className="add-labels">
               Adresse :
               <input
@@ -140,9 +157,7 @@ const AddEntreprise = () => {
                 onChange={(e) => setAdresse(e.target.value)}
               />
             </label>
-          </div>
           <br />
-          <div className="form-row">
             <label className="add-labels">
               Suite :
               <input
@@ -153,7 +168,9 @@ const AddEntreprise = () => {
                 onChange={(e) => setSuite(e.target.value)}
               />
             </label>
+            </div>
             <br />
+            <div className="form-row">
             <label className="add-labels">
               Code postal :
               <input
@@ -164,9 +181,7 @@ const AddEntreprise = () => {
                 onChange={(e) => setCodePostal(e.target.value)}
               />
             </label>
-          </div>
           <br />
-          <div className="form-row">
             <label className="add-labels">
               Ville :
               <input
@@ -177,7 +192,9 @@ const AddEntreprise = () => {
                 onChange={(e) => setVille(e.target.value)}
               />
             </label>
+            </div>
             <br />
+            <div className="form-row">
             <label className="add-labels">
               Téléphone :
               <input
@@ -188,9 +205,7 @@ const AddEntreprise = () => {
                 onChange={(e) => setTelephone(e.target.value)}
               />
             </label>
-          </div>
           <br />
-          <div className="form-row">
             <label className="add-labels">
               Fax :
               <input
@@ -201,7 +216,9 @@ const AddEntreprise = () => {
                 onChange={(e) => setFax(e.target.value)}
               />
             </label>
+            </div>
             <br />
+            <div className="form-row">
             <label className="add-labels">
               Contact :
               <input
@@ -212,8 +229,8 @@ const AddEntreprise = () => {
                 onChange={(e) => setContact(e.target.value)}
               />
             </label>
-          </div>
           <br />
+
           <label className="add-labels">
             Tél contact :
             <input
@@ -224,13 +241,15 @@ const AddEntreprise = () => {
               onChange={(e) => setTelContact(e.target.value)}
             />
           </label>
+          <br/>
+            </div>
           <br />
           <button
             className="Add-button"
             type="submit"
             onClick={() => handleSubmit}
           >
-            Ajouter :
+            Ajouter
           </button>
         </form>
       </div>

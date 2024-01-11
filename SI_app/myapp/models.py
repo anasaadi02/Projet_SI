@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Entreprise(models.Model):
+    nom = models.CharField(max_length=255, default='entreprise')
     nSiret = models.CharField(max_length=255, primary_key=True)
     fJuridique = models.CharField(max_length=10)
     rSociale = models.CharField(max_length=255)
