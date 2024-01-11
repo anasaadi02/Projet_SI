@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/style.css";
+import "../styles/styleadd.css";
 import { Link, useNavigate } from "react-router-dom";
 
 function List() {

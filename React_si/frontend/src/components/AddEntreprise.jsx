@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/style.css";
+import "../styles/styleadd.css";
 import { useNavigate } from "react-router-dom";
 
 const AddEntreprise = () => {
@@ -93,7 +93,7 @@ const AddEntreprise = () => {
           <label className="add-labels">
               Nom :
               <input
-                placeholder="..."
+                placeholder=""
                 className="add-inputs"
                 value={nom}
                 onChange={(e) => setNom(e.target.value)}
@@ -102,7 +102,7 @@ const AddEntreprise = () => {
             <label className="add-labels">
               N°Siret :
               <input
-                placeholder="..."
+                placeholder=""
                 className="add-inputs"
                 value={nSiret}
                 onChange={(e) => setNumSiret(e.target.value)}
@@ -141,7 +141,7 @@ const AddEntreprise = () => {
             <label className="add-labels">
               Raison sociale :
               <input
-                placeholder="..."
+                placeholder=""
                 className="add-inputs"
                 type="text"
                 value={rSociale}
@@ -155,7 +155,7 @@ const AddEntreprise = () => {
             <label className="add-labels">
               Adresse :
               <input
-                placeholder="..."
+                placeholder=""
                 className="add-inputs"
                 type="text"
                 value={adresse}
@@ -166,7 +166,7 @@ const AddEntreprise = () => {
             <label className="add-labels">
               Suite :
               <input
-                placeholder="..."
+                placeholder=""
                 className="add-inputs"
                 type="text"
                 value={suite}
@@ -179,7 +179,7 @@ const AddEntreprise = () => {
             <label className="add-labels">
               Code postal :
               <input
-                placeholder="..."
+                placeholder=""
                 className="add-inputs"
                 type="text"
                 value={codeP}
@@ -190,7 +190,7 @@ const AddEntreprise = () => {
             <label className="add-labels">
               Ville :
               <input
-                placeholder="..."
+                placeholder=""
                 className="add-inputs"
                 type="text"
                 value={ville}
@@ -203,7 +203,7 @@ const AddEntreprise = () => {
             <label className="add-labels">
               Téléphone :
               <input
-                placeholder="..."
+                placeholder=""
                 className="add-inputs"
                 type="tel"
                 value={Tele}
@@ -214,7 +214,7 @@ const AddEntreprise = () => {
             <label className="add-labels">
               Fax :
               <input
-                placeholder="..."
+                placeholder=""
                 className="add-inputs"
                 type="tel"
                 value={FAX}
@@ -227,7 +227,7 @@ const AddEntreprise = () => {
             <label className="add-labels">
               Contact :
               <input
-                placeholder="..."
+                placeholder=""
                 className="add-inputs"
                 type="text"
                 value={contact}
@@ -239,14 +239,13 @@ const AddEntreprise = () => {
           <label className="add-labels">
             Tél contact :
             <input
-              placeholder="..."
+              placeholder=""
               className="add-inputs"
               type="tel"
               value={teleContact}
               onChange={(e) => setTelContact(e.target.value)}
             />
           </label>
-          <br/>
             </div>
           <br />
           <button

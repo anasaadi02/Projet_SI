@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/style.css";
+import "../styles/modify.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const DelModInternship = () => {

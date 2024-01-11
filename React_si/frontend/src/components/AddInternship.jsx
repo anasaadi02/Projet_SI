@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/style.css";
+import "../styles/styleadd.css";
 import { useNavigate } from "react-router-dom";
 
 const AddInternship = () => {
