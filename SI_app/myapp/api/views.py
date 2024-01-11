@@ -1,7 +1,7 @@
 from ..models import Entreprise, Stage, Professeur, Etudiant
 from rest_framework.viewsets import ModelViewSet
 from .serializers import StageSerializer, EntrepriseSerializer, EtudiantSerializer, ProfesseurSerializer
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, ListAPIView
 
 
 class StageViewSet(ModelViewSet):
@@ -29,7 +29,7 @@ class StageDeleteView(DestroyAPIView):
     queryset = Stage.objects.all()
     serializer_class = StageSerializer
     
-class EntrepriseViewSet(ModelViewSet):
+class EntrepriseListView(ListAPIView):
     queryset = Entreprise.objects.all()
     serializer_class = EntrepriseSerializer
 
@@ -37,10 +37,10 @@ class EntrepriseCreateView(CreateAPIView):
     queryset = Entreprise.objects.all()
     serializer_class = EntrepriseSerializer
 
-class EtudiantViewSet(ModelViewSet):
+class EtudiantListView(ListAPIView):
     queryset = Etudiant.objects.all()
     serializer_class = EtudiantSerializer
 
-class ProfesseurViewSet(ModelViewSet):
+class ProfesseurListView(ListAPIView):
     queryset = Professeur.objects.all()
     serializer_class = ProfesseurSerializer

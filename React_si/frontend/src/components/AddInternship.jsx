@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/style.css";
 import { useNavigate } from "react-router-dom";
 
@@ -55,6 +55,54 @@ const AddInternship = () => {
     setCompte_rendu("");
     setEntreprise("");
   };
+
+  //fetch entreprise data:
+  const [EntrdataList, setDataList] = useState([]);
+  const [etudiantDataList, setEtudiantDataList] = useState(null);
+    const [profDataList, setProfDataList] = useState(null);
+
+
+  //hadi hia la fonction likatjib data mn django
+  useEffect(() => {
+    async function fetchData() {
+      const baseUrl = import.meta.env.VITE_API_URL;
+      const entrepriseUrl = `${baseUrl}entre/`; // Append the specific path
+      const etudiantUrl = `${baseUrl}etudiant/`;
+      const profUrl = `${baseUrl}prof/`;
+
+      try {
+        const response = await fetch(entrepriseUrl);
+        if (!response.ok) {
+          throw new Error('Network response was not ok!');
+        }
+        const result = await response.json();
+        console.log(result);
+
+        setDataList(result);
+
+        const etudiantResponse = await fetch(etudiantUrl);
+        if (!etudiantResponse.ok) {
+            throw new Error('Network response was not ok!');
+        }
+        const etudiantResult = await etudiantResponse.json();
+        setEtudiantDataList(etudiantResult);
+
+        // Fetch data from ProfesseurListView
+        const profResponse = await fetch(profUrl);
+        if (!profResponse.ok) {
+            throw new Error('Network response was not ok!');
+        }
+        const profResult = await profResponse.json();
+        setProfDataList(profResult);
+
+      } catch {
+        console.error('Error fetching data');
+      }
+    }
+    fetchData();
+  }, [])
+
+  console.log(EntrdataList, 'hhh');
 
   return (
     <div className="add">
