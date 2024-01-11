@@ -59,8 +59,7 @@ const AddInternship = () => {
   //fetch entreprise data:
   const [EntrdataList, setDataList] = useState([]);
   const [etudiantDataList, setEtudiantDataList] = useState(null);
-    const [profDataList, setProfDataList] = useState(null);
-
+  const [profDataList, setProfDataList] = useState(null);
 
   //hadi hia la fonction likatjib data mn django
   useEffect(() => {
@@ -73,7 +72,7 @@ const AddInternship = () => {
       try {
         const response = await fetch(entrepriseUrl);
         if (!response.ok) {
-          throw new Error('Network response was not ok!');
+          throw new Error("Network response was not ok!");
         }
         const result = await response.json();
         console.log(result);
@@ -82,7 +81,7 @@ const AddInternship = () => {
 
         const etudiantResponse = await fetch(etudiantUrl);
         if (!etudiantResponse.ok) {
-            throw new Error('Network response was not ok!');
+          throw new Error("Network response was not ok!");
         }
         const etudiantResult = await etudiantResponse.json();
         setEtudiantDataList(etudiantResult);
@@ -90,25 +89,31 @@ const AddInternship = () => {
         // Fetch data from ProfesseurListView
         const profResponse = await fetch(profUrl);
         if (!profResponse.ok) {
-            throw new Error('Network response was not ok!');
+          throw new Error("Network response was not ok!");
         }
         const profResult = await profResponse.json();
         setProfDataList(profResult);
-
       } catch {
-        console.error('Error fetching data');
+        console.error("Error fetching data");
       }
     }
     fetchData();
-  }, [])
+  }, []);
 
-  console.log(EntrdataList, 'hhh');
+  console.log(EntrdataList, "hhh");
   console.log(etudiantDataList);
   console.log(profDataList);
 
   return (
     <div className="add">
       <h2 className="add-title">Ajouter les infos du stage</h2>
+      <button
+        className="retour-but"
+        type="submit"
+        onClick={() => navigation("/")}
+      >
+        retour
+      </button>
       <div className="add1">
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="form-row">

@@ -78,7 +78,10 @@ table tbody tr:hover {
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 100px;
+  right: 130px;
+}
+.add-button-test:hover {
+  background-color: rgb(92, 130, 130);
 }
 
 .add-button:hover {
@@ -200,6 +203,7 @@ form {
 }
 
 /*styling dial pop ups f Delete o Modify stage*/
+
 .popup {
   position: fixed;
   top: 50%;
@@ -256,3 +260,19 @@ form {
 }
 
 /*styling dial form pour delete o lmodif dial stage*/
+
+/* styling dial retour buttons*/
+.retour-but {
+  background-color: white;
+  color: black;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "consolas";
+  font-weight: bold;
+  font-size: 18px;
+  margin: 5px;
+  position: relative;
+  top: -60px;
+}

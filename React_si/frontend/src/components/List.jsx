@@ -47,12 +47,12 @@ function List() {
       <Link to="/AddInternship">
         {" "}
         {/* Link to navigate to the AddInternship page */}
-        <button className="add-button">+Ajouter</button>
+        <button className="add-button">+AjouterS</button>
       </Link>
       <Link to="/AddEntreprise">
         {" "}
         {/* Link to navigate to the AddInternship page */}
-        <button className="add-button-test">+Ajouter</button>
+        <button className="add-button-test">+AjouterE</button>
       </Link>
 
       <table>
