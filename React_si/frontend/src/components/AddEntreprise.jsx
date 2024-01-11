@@ -15,10 +15,15 @@ const AddEntreprise = () => {
   const [FAX, setFax] = useState("");
   const [contact, setContact] = useState("");
   const [teleContact, setTelContact] = useState("");
+  const [isPopUpConfirm, setIsPopUpConfirm] = useState(false);
+  // const afterAdd = () => {
+  //   setIsPopUpConfirm(true);
+  // };
 
   let navigation = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsPopUpConfirm(true);
 
     try {
       const newEntreprise = {
@@ -251,6 +256,14 @@ const AddEntreprise = () => {
           >
             Ajouter
           </button>
+          {isPopUpConfirm && (
+            <div className="popup">
+              <div className="popup-content-mod">
+                <h4>l'entreprise a été ajouté avec succès</h4>
+                <button onClick={() => navigation("/")}>valider</button>
+              </div>
+            </div>
+          )}
         </form>
       </div>
     </div>
