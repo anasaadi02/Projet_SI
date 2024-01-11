@@ -70,7 +70,7 @@ table tbody tr:hover {
 }
 
 .add-button-test {
-  background-color: aqua;
+  background-color: blue;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -78,7 +78,7 @@ table tbody tr:hover {
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 100px;
+  right: 120px;
 }
 
 .add-button:hover {
@@ -142,12 +142,13 @@ form {
 .add-inputs {
   font-weight: bold;
   width: 100%;
-
   border-radius: 8px;
   padding: 5px;
   display: block;
   margin-left: auto;
   text-align: center;
+  box-sizing: border-box;
+  height: 40px;
 }
 
 .Add-button {
@@ -171,9 +172,7 @@ form {
 .buttons-container {
   /* margin-top: 500px;
   margin-left: 750px; */
-  position: fixed;
-  top: 75%;
-  left: 43%;
+  margin: 10px;
 }
 .delete-button {
   background-color: red;
@@ -255,4 +254,8 @@ form {
   font-size: 16px;
 }
 
+.form-head{
+  width: 100%;
+  margin-left: 57%;
+}
 /*styling dial form pour delete o lmodif dial stage*/

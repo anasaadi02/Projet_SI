@@ -17,10 +17,10 @@ class EntrepriseSerializer(ModelSerializer):
 class EtudiantSerializer(ModelSerializer):
     class Meta:
         model = Etudiant
-        fields = ['nEtudiant', 'nom', 'prenom', 'promo', 'adresse','Suite', 'code_postal', 'ville', 'sexe', 'date_de_naissance', 'telephone', 'menstion']
+        fields = ['nEtudiant', 'nom', 'prenom', 'promo', 'adresse','suite', 'code_postal', 'ville', 'sexe', 'date_de_naissance', 'telephone', 'mention']
 
 
 class ProfesseurSerializer(ModelSerializer):
     class Meta:
         model = Professeur
-        fields = ['nProf', 'qualite', 'nom', 'prenom', 'adresse','Suite', 'code_postal', 'ville', 'tel_ecole', 'tel_domicile', 'date_embauche', 'date_depart']
+        fields = ['nProf', 'qualite', 'nom', 'prenom', 'adresse','suite', 'code_postal', 'ville', 'tel_ecole', 'tel_domicile', 'date_embauche', 'date_depart']

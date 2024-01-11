@@ -52,7 +52,7 @@ function List() {
       <Link to="/AddEntreprise">
         {" "}
         {/* Link to navigate to the AddInternship page */}
-        <button className="add-button-test">+Ajouter</button>
+        <button className="add-button-test">Ajouter Entreprise</button>
       </Link>
 
       <table>

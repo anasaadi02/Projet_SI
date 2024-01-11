@@ -13,9 +13,22 @@ const AddInternship = () => {
   const [entreprise, setEntreprise] = useState("");
   const [isPopUpConfirm, setIsPopUpConfirm] = useState(false);
 
+  const handleSelectChange = (e) => {
+    const selectedNEtudiant = Number(e.target.value);
+    const selectedEtudiant = etudiantDataList.find(etudiant => etudiant.nEtudiant === selectedNEtudiant);
+    setNEtudiant(selectedNEtudiant);
+    if (selectedEtudiant) {
+      setPromo(selectedEtudiant.promo);
+    }
+  };
+  
+
   const afterAdd = () => {
     setIsPopUpConfirm(true);
   };
+
+  
+
   let navigation = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,6 +43,7 @@ const AddInternship = () => {
       compte_rendu: compte_rendu,
       entreprise: entreprise,
     };
+    console.log(newRow, 'hhhhh')
 
     fetch(`${import.meta.env.VITE_ADD_URL}`, {
       method: "POST",
@@ -59,7 +73,7 @@ const AddInternship = () => {
   //fetch entreprise data:
   const [EntrdataList, setDataList] = useState([]);
   const [etudiantDataList, setEtudiantDataList] = useState(null);
-    const [profDataList, setProfDataList] = useState(null);
+  const [profDataList, setProfDataList] = useState(null);
 
 
   //hadi hia la fonction likatjib data mn django
@@ -76,7 +90,6 @@ const AddInternship = () => {
           throw new Error('Network response was not ok!');
         }
         const result = await response.json();
-        console.log(result);
 
         setDataList(result);
 
@@ -102,36 +115,26 @@ const AddInternship = () => {
     fetchData();
   }, [])
 
-  console.log(EntrdataList, 'hhh');
-  console.log(etudiantDataList);
-  console.log(profDataList);
+  console.log(etudiantDataList)
 
   return (
     <div className="add">
       <h2 className="add-title">Ajouter les infos du stage</h2>
       <div className="add1">
         <form className="form-container" onSubmit={handleSubmit}>
-          <div className="form-row">
+          <div className="form-head">
             <label className="add-labels">
-              Promo
-              <input
-                placeholder="..."
-                className="add-inputs"
-                type="text"
-                value={promo}
-                onChange={(e) => setPromo(e.target.value)}
-              />
-            </label>
-            <br />
-            <label className="add-labels">
-              N°Etudiant
-              <input
-                placeholder="..."
-                className="add-inputs"
-                type="text"
-                value={nEtudiant}
-                onChange={(e) => setNEtudiant(e.target.value)}
-              />
+              Etudiant
+              <select className="add-inputs" value={nEtudiant} onChange={handleSelectChange}>
+                <option value="">-</option>
+                {etudiantDataList && etudiantDataList.length > 0 && etudiantDataList
+                  .sort((a, b) => a.nom.localeCompare(b.nom))
+                  .map((etudiant) => (
+                    <option key={etudiant.nEtudiant} value={etudiant.nEtudiant}>
+                      {etudiant.nom} {etudiant.prenom}
+                    </option>
+                  ))}
+              </select>
             </label>
           </div>
           <br />
@@ -139,7 +142,6 @@ const AddInternship = () => {
             <label className="add-labels">
               Professeur
               <input
-                placeholder="..."
                 className="add-inputs"
                 type="text"
                 value={prof}
@@ -150,7 +152,6 @@ const AddInternship = () => {
             <label className="add-labels">
               Tuteur
               <input
-                placeholder="..."
                 className="add-inputs"
                 type="text"
                 value={tuteur}
@@ -163,7 +164,6 @@ const AddInternship = () => {
             <label className="add-labels">
               Type
               <input
-                placeholder="..."
                 className="add-inputs"
                 type="text"
                 value={tpe}
@@ -174,7 +174,6 @@ const AddInternship = () => {
             <label className="add-labels">
               Année
               <input
-                placeholder="..."
                 className="add-inputs"
                 type="text"
                 value={annee}
@@ -187,7 +186,6 @@ const AddInternship = () => {
             <label className="add-labels">
               Compte rendu
               <input
-                placeholder="..."
                 className="add-inputs"
                 type="text"
                 value={compte_rendu}
@@ -198,7 +196,6 @@ const AddInternship = () => {
             <label className="add-labels">
               Company
               <input
-                placeholder="..."
                 className="add-inputs"
                 type="text"
                 value={entreprise}

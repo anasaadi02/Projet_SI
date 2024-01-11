@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/style.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -12,6 +12,14 @@ const DelModInternship = () => {
   const [compte_rendu, setCompte_rendu] = useState("");
   const [entreprise, setEntreprise] = useState("");
 
+  const handleSelectChange = (e) => {
+    const selectedNEtudiant = Number(e.target.value);
+    const selectedEtudiant = etudiantDataList.find(etudiant => etudiant.nEtudiant === selectedNEtudiant);
+    setNEtudiant(selectedNEtudiant);
+    if (selectedEtudiant) {
+      setPromo(selectedEtudiant.promo);
+    }
+  };
 
   const location = useLocation();
   const { rowData } = location.state || {};
@@ -50,6 +58,15 @@ const DelModInternship = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const handleSelectChange = (e) => {
+      const selectedNEtudiant = Number(e.target.value);
+      const selectedEtudiant = etudiantDataList.find(etudiant => etudiant.nEtudiant === selectedNEtudiant);
+      setNEtudiant(selectedNEtudiant);
+      if (selectedEtudiant) {
+        setPromo(selectedEtudiant.promo);
+      }
+    };
   
     const updatedRow = {
       nStage: rowData.nStage,
@@ -102,6 +119,47 @@ const DelModInternship = () => {
       }, 500);
   };
   
+  const [EntrdataList, setDataList] = useState([]);
+  const [etudiantDataList, setEtudiantDataList] = useState(null);
+  const [profDataList, setProfDataList] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const baseUrl = import.meta.env.VITE_API_URL;
+      const entrepriseUrl = `${baseUrl}entre/`; // Append the specific path
+      const etudiantUrl = `${baseUrl}etudiant/`;
+      const profUrl = `${baseUrl}prof/`;
+
+      try {
+        const response = await fetch(entrepriseUrl);
+        if (!response.ok) {
+          throw new Error('Network response was not ok!');
+        }
+        const result = await response.json();
+
+        setDataList(result);
+
+        const etudiantResponse = await fetch(etudiantUrl);
+        if (!etudiantResponse.ok) {
+            throw new Error('Network response was not ok!');
+        }
+        const etudiantResult = await etudiantResponse.json();
+        setEtudiantDataList(etudiantResult);
+
+        // Fetch data from ProfesseurListView
+        const profResponse = await fetch(profUrl);
+        if (!profResponse.ok) {
+            throw new Error('Network response was not ok!');
+        }
+        const profResult = await profResponse.json();
+        setProfDataList(profResult);
+
+      } catch {
+        console.error('Error fetching data');
+      }
+    }
+    fetchData();
+  }, [])
 
   return (
     <div>
@@ -138,23 +196,6 @@ const DelModInternship = () => {
           </table>
         </div>
       )}
-      <div className="buttons-container">
-        <button
-          className="delete-button"
-          id="delete-button"
-          onClick={() => afterModDel("delete-button")}
-        >
-          supprimer
-        </button>
-
-        <button
-          className="modify-button"
-          id="modify-button"
-          onClick={() => afterModDel("modify-button")}
-        >
-          modifier
-        </button>
-      </div>
 
       {isPopUpDel && (
         <div className="popup">
@@ -182,15 +223,19 @@ const DelModInternship = () => {
       )}
       <div>
       <form className="form-container">
-          <div className="form-row">
-            <label className="add-labels">
-              Promo
-              <input type="text" className="add-inputs" value={promo} onChange={(e) => setPromo(e.target.value)} />
-            </label>
-            <br />
-            <label className="add-labels">
-              N°Etudiant
-              <input type="text" className="add-inputs" value={nEtudiant} onChange={(e) => setNEtudiant(e.target.value)} />
+          <div className="form-head">
+          <label className="add-labels">
+              Etudiant
+              <select className="add-inputs" value={nEtudiant} onChange={handleSelectChange}>
+                <option value="">-</option>
+                {etudiantDataList && etudiantDataList.length > 0 && etudiantDataList
+                  .sort((a, b) => a.nom.localeCompare(b.nom))
+                  .map((etudiant) => (
+                    <option key={etudiant.nEtudiant} value={etudiant.nEtudiant}>
+                      {etudiant.nom} {etudiant.prenom}
+                    </option>
+                  ))}
+              </select>
             </label>
           </div>
           <div className="form-row">
@@ -226,7 +271,27 @@ const DelModInternship = () => {
               <input type="text" className="add-inputs" value={entreprise} onChange={(e) => setEntreprise(e.target.value)} />
             </label>
           </div>
+          <div className="buttons-container">
+        <button
+          type="button"
+          className="delete-button"
+          id="delete-button"
+          onClick={() => afterModDel("delete-button")}
+        >
+          supprimer
+        </button>
+
+        <button
+          type="button"
+          className="modify-button"
+          id="modify-button"
+          onClick={() => afterModDel("modify-button")}
+        >
+          modifier
+        </button>
+      </div>
         </form>
+        
       </div>
     </div>
   );
