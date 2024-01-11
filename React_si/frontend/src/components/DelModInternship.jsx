@@ -44,13 +44,13 @@ const DelModInternship = () => {
 
   function getCsrfToken() {
     const csrfCookie = document.cookie
-      .split('; ')
-      .find((cookie) => cookie.startsWith('csrftoken='));
-  
+      .split("; ")
+      .find((cookie) => cookie.startsWith("csrftoken="));
+
     if (csrfCookie) {
-      return csrfCookie.split('=')[1];
+      return csrfCookie.split("=")[1];
     }
-  
+
     return null;
   }
 
@@ -80,7 +80,7 @@ const DelModInternship = () => {
       entreprise: entreprise || rowData.entreprise,
     };
 
-    console.log(updatedRow)
+    console.log(updatedRow);
     fetch(`${import.meta.env.VITE_UPDATE_URL}/${updatedRow.nStage}`, {
       method: "PUT",
       headers: {
@@ -96,13 +96,13 @@ const DelModInternship = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
-    console.log(updatedRow)
-    console.log("done")
+    console.log(updatedRow);
+    console.log("done");
     setTimeout(() => {
       navigation("/");
     }, 500);
   };
-  
+
   const handleDelete = () => {
     fetch(`${import.meta.env.VITE_DELETE_URL}/${rowData.nStage}`, {
       method: "DELETE",
@@ -114,9 +114,9 @@ const DelModInternship = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
-      setTimeout(() => {
-        navigation("/");
-      }, 500);
+    setTimeout(() => {
+      navigation("/");
+    }, 500);
   };
   
   const [EntrdataList, setDataList] = useState([]);
@@ -164,6 +164,13 @@ const DelModInternship = () => {
   return (
     <div>
       <h2 className="add-title">Modifier les infos du stage</h2>
+      <button
+        className="retour-but"
+        type="submit"
+        onClick={() => navigation("/")}
+      >
+        retour
+      </button>
       {rowData && (
         <div>
           <table>
@@ -241,34 +248,64 @@ const DelModInternship = () => {
           <div className="form-row">
             <label className="add-labels">
               Professeur
-              <input type="text" className="add-inputs" value={prof} onChange={(e) => setProf(e.target.value)} />
+              <input
+                type="text"
+                className="add-inputs"
+                value={prof}
+                onChange={(e) => setProf(e.target.value)}
+              />
             </label>
             <br />
             <label className="add-labels">
               Tuteur
-              <input type="text" className="add-inputs" value={tuteur} onChange={(e) => setTuteur(e.target.value)} />
+              <input
+                type="text"
+                className="add-inputs"
+                value={tuteur}
+                onChange={(e) => setTuteur(e.target.value)}
+              />
             </label>
           </div>
           <div className="form-row">
             <label className="add-labels">
               Type
-              <input type="text" className="add-inputs" value={tpe} onChange={(e) => setTpe(e.target.value)} />
+              <input
+                type="text"
+                className="add-inputs"
+                value={tpe}
+                onChange={(e) => setTpe(e.target.value)}
+              />
             </label>
             <br />
             <label className="add-labels">
               Année
-              <input type="text" className="add-inputs" value={annee} onChange={(e) => setAnnee(e.target.value)} />
+              <input
+                type="text"
+                className="add-inputs"
+                value={annee}
+                onChange={(e) => setAnnee(e.target.value)}
+              />
             </label>
           </div>
           <div className="form-row">
             <label className="add-labels">
               Compte rendu
-              <input type="text" className="add-inputs" value={compte_rendu} onChange={(e) => setCompte_rendu(e.target.value)} />
+              <input
+                type="text"
+                className="add-inputs"
+                value={compte_rendu}
+                onChange={(e) => setCompte_rendu(e.target.value)}
+              />
             </label>
             <br />
             <label className="add-labels">
               Company
-              <input type="text" className="add-inputs" value={entreprise} onChange={(e) => setEntreprise(e.target.value)} />
+              <input
+                type="text"
+                className="add-inputs"
+                value={entreprise}
+                onChange={(e) => setEntreprise(e.target.value)}
+              />
             </label>
           </div>
           <div className="buttons-container">

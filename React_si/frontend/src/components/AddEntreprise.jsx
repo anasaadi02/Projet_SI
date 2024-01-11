@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/style.css";
+import { useNavigate } from "react-router-dom";
 
 const AddEntreprise = () => {
   const [nSiret, setNumSiret] = useState("");
@@ -14,6 +15,7 @@ const AddEntreprise = () => {
   const [contact, setContact] = useState("");
   const [teleContact, setTelContact] = useState("");
 
+  let navigation = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -49,160 +51,167 @@ const AddEntreprise = () => {
           console.error("Error:", error);
         });
 
-    setNumSiret("");
-    setFormeJuridique("");
-    setRaisonSociale("");
-    setAdresse("");
-    setSuite("");
-    setCodePostal("");
-    setVille("");
-    setTelephone("");
-    setFax("");
-    setContact("");
-    setTelContact("");
-  }catch (error) {
-    console.error("Error:", error);
-  }
-};
+      setNumSiret("");
+      setFormeJuridique("");
+      setRaisonSociale("");
+      setAdresse("");
+      setSuite("");
+      setCodePostal("");
+      setVille("");
+      setTelephone("");
+      setFax("");
+      setContact("");
+      setTelContact("");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <div className="add">
       <h2 className="add-title">Ajouter les infos de l'entreprise</h2>
+      <button
+        className="retour-but"
+        type="submit"
+        onClick={() => navigation("/")}
+      >
+        retour
+      </button>
       <div className="add1">
         <form onSubmit={handleSubmit} className="form-container">
-        <div className="form-row">
-          <label className="add-labels">
-            N°Siret :
-            <input
-              placeholder="..."
-              className="add-inputs"
-              value={nSiret}
-              onChange={(e) => setNumSiret(e.target.value)}
-            />
-          </label>
-          <br />
-          <label className="add-labels">
-            Forme juridique :
-            <div>
-              <label>
-                <input
-                  type="radio"
-                  value="SA"
-                  checked={fJuridique === "SA"}
-                  onChange={() => setFormeJuridique("SA")}
-                />
-                SA
-              </label>
-              <br />
-              <label>
-                <input
-                  className="radio"
-                  type="radio"
-                  value="SARL"
-                  checked={fJuridique === "SARL"}
-                  onChange={() => setFormeJuridique("SARL")}
-                />
-                SARL
-              </label>
-              {/* Add more radio options as needed */}
-            </div>
-          </label>
+          <div className="form-row">
+            <label className="add-labels">
+              N°Siret :
+              <input
+                placeholder="..."
+                className="add-inputs"
+                value={nSiret}
+                onChange={(e) => setNumSiret(e.target.value)}
+              />
+            </label>
+            <br />
+            <label className="add-labels">
+              Forme juridique :
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    value="SA"
+                    checked={fJuridique === "SA"}
+                    onChange={() => setFormeJuridique("SA")}
+                  />
+                  SA
+                </label>
+                <br />
+                <label>
+                  <input
+                    className="radio"
+                    type="radio"
+                    value="SARL"
+                    checked={fJuridique === "SARL"}
+                    onChange={() => setFormeJuridique("SARL")}
+                  />
+                  SARL
+                </label>
+                {/* Add more radio options as needed */}
+              </div>
+            </label>
           </div>
           <br />
           <div className="form-row">
-          <label className="add-labels">
-            Raison sociale :
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="text"
-              value={rSociale}
-              onChange={(e) => setRaisonSociale(e.target.value)}
-            />
-          </label>
-          <br />
-          <label className="add-labels">
-            Adresse :
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="text"
-              value={adresse}
-              onChange={(e) => setAdresse(e.target.value)}
-            />
-          </label>
+            <label className="add-labels">
+              Raison sociale :
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={rSociale}
+                onChange={(e) => setRaisonSociale(e.target.value)}
+              />
+            </label>
+            <br />
+            <label className="add-labels">
+              Adresse :
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={adresse}
+                onChange={(e) => setAdresse(e.target.value)}
+              />
+            </label>
           </div>
           <br />
           <div className="form-row">
-          <label className="add-labels">
-            Suite :
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="text"
-              value={suite}
-              onChange={(e) => setSuite(e.target.value)}
-            />
-          </label>
-          <br />
-          <label className="add-labels">
-            Code postal :
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="text"
-              value={codeP}
-              onChange={(e) => setCodePostal(e.target.value)}
-            />
-          </label>
+            <label className="add-labels">
+              Suite :
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={suite}
+                onChange={(e) => setSuite(e.target.value)}
+              />
+            </label>
+            <br />
+            <label className="add-labels">
+              Code postal :
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={codeP}
+                onChange={(e) => setCodePostal(e.target.value)}
+              />
+            </label>
           </div>
           <br />
           <div className="form-row">
-          <label className="add-labels">
-            Ville :
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="text"
-              value={ville}
-              onChange={(e) => setVille(e.target.value)}
-            />
-          </label>
-          <br />
-          <label className="add-labels">
-            Téléphone :
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="tel"
-              value={Tele}
-              onChange={(e) => setTelephone(e.target.value)}
-            />
-          </label>
+            <label className="add-labels">
+              Ville :
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={ville}
+                onChange={(e) => setVille(e.target.value)}
+              />
+            </label>
+            <br />
+            <label className="add-labels">
+              Téléphone :
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="tel"
+                value={Tele}
+                onChange={(e) => setTelephone(e.target.value)}
+              />
+            </label>
           </div>
           <br />
           <div className="form-row">
-          <label className="add-labels">
-            Fax :
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="tel"
-              value={FAX}
-              onChange={(e) => setFax(e.target.value)}
-            />
-          </label>
-          <br />
-          <label className="add-labels">
-            Contact :
-            <input
-              placeholder="..."
-              className="add-inputs"
-              type="text"
-              value={contact}
-              onChange={(e) => setContact(e.target.value)}
-            />
-          </label>
+            <label className="add-labels">
+              Fax :
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="tel"
+                value={FAX}
+                onChange={(e) => setFax(e.target.value)}
+              />
+            </label>
+            <br />
+            <label className="add-labels">
+              Contact :
+              <input
+                placeholder="..."
+                className="add-inputs"
+                type="text"
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
+              />
+            </label>
           </div>
           <br />
           <label className="add-labels">
@@ -216,7 +225,11 @@ const AddEntreprise = () => {
             />
           </label>
           <br />
-          <button className="Add-button" type="submit" onClick={()=>handleSubmit}>
+          <button
+            className="Add-button"
+            type="submit"
+            onClick={() => handleSubmit}
+          >
             Ajouter :
           </button>
         </form>

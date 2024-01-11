@@ -78,7 +78,7 @@ table tbody tr:hover {
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 120px;
+  right: 130px;
 }
 
 .add-button:hover {
@@ -96,7 +96,6 @@ table tbody tr:hover {
 }
 .add {
   /* margin-left: 40px; */
-  border: solid 2px #2c3038;
   /* background-image: url(../assets/intern.png);
   background-repeat: no-repeat;
   top: 50px;
@@ -127,7 +126,7 @@ form {
   text-align: left;
 }
 .form-container {
-  margin-top: 100px;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,8 +159,9 @@ form {
   cursor: pointer;
   font-family: "consolas";
   font-weight: bold;
-  font-size: 14px;
+  font-size: 20px;
   margin-left: 10px;
+  margin-bottom: 20px;
 }
 
 .radio {
@@ -199,6 +199,7 @@ form {
 }
 
 /*styling dial pop ups f Delete o Modify stage*/
+
 .popup {
   position: fixed;
   top: 50%;
@@ -259,3 +260,19 @@ form {
   margin-left: 57%;
 }
 /*styling dial form pour delete o lmodif dial stage*/
+
+/* styling dial retour buttons*/
+.retour-but {
+  background-color: white;
+  color: black;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "consolas";
+  font-weight: bold;
+  font-size: 18px;
+  margin: 5px;
+  position: relative;
+  top: -60px;
+}
